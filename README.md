@@ -1,4 +1,4 @@
-# Zmays_cis_trans
+# Quantificaiton of allele-specific expression in maize (Zea mays)
 
 ## Experimental Design
 
