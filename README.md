@@ -1,11 +1,9 @@
 # Zmays_cis_trans
 
- # Concerted cis and trans effects underpin heightened defense gene expression in multi-herbivore resistant maize lines
-#### Data storage location: 
-
 ## Experimental Design
 
-#### The B96 and B75 maize inbred lines are highly resistant to multiple herbivores, including the devastating European corn borer (<i> Ostrinia nubilalis </i>) and the generalist two-spotted spider mites (<i> Tetranychus urticae </i>) [ref]("https://www.frontiersin.org/articles/10.3389/fpls.2021.693088/full"). To further understand the genetic basis underlying their resistant phenotype, leaf tissue from maize plants under uninfested (control) or infested (24 h, <i> T. urticae </i> treatment) conditions was collected from B73, B96, and B75, and the respective F1 plants from crosses of B96 and B75 to B73, where RNA-seq was extracted from.
+#### 
+The B96 and B75 maize inbred lines are highly resistant to multiple herbivores, including the devastating European corn borer (<i> Ostrinia nubilalis </i>) and the generalist two-spotted spider mites (<i> Tetranychus urticae </i>) [ref]("https://www.frontiersin.org/articles/10.3389/fpls.2021.693088/full"). To further understand the genetic basis underlying their resistant phenotype, leaf tissue from maize plants under uninfested (control) or infested (24 h, <i> T. urticae </i> treatment) conditions was collected from B73, B96, and B75, and the respective F1 plants from crosses of B96 and B75 to B73, where RNA-seq was extracted from.
 - 2 independent experiement for B96 vs. B73 and B75 vs. B73 (B73 is relative susceptible line)
 - 2 conditions: the steady (control, **C**) and infested (treatment, **T**) conditions
 - 4 biological replicates 
@@ -54,14 +52,6 @@
     <code> rsem-prepare-reference -gtf gtf --star reference.fasta reference_name </code>
     - calculate gene and isoform level expression <br>
     <code> rsem-calculate-expression --paired-end --star-gzipped-read-file --star --strandedness reverse -p 45 read_1.fastq.gz read_2.fastq.gz reference_name output </code>
-    
-## Differential gene expression analysis by performing pairwise comparisons
-#### We employing [DESeq2](https://github.com/mikelove/DESeq2) for the differential gene expression (DGE) analysis by comparing between genotypes by treatment, or between control and treatment by a given genotype. 
-#### Inputs prepared for DESeq2:
-  - htseq-count for all samples in one folder;
-  - sample information table matched to htseq-count files;
-#### Please refer to the script [diff_expr_htseq.R](https://github.com/richardmichaelclark/Maize_cistrans/blob/de501d2ef5689686828c9c78a6b6c41a437c963c/diff_expr_htseq.R) for DGE analysis.
-#### Please refer to the script [PCA_DESeq2.R](https://github.com/richardmichaelclark/Maize_cistrans/blob/main/PCA_DESeq2.R) for principal component analysis using DESeq2. 
 
 ## Developed pipeline for allele-specific expression (ASE) analyses 
 #### By taking SNP variants after DNA-based filtering, we performed gene level ASE analyses. 
@@ -75,35 +65,3 @@
 #### Please refer to the script [ASE.py](https://github.com/richardmichaelclark/Maize_cistrans/blob/main/ASE.py) for measurement of gene-level allelic expression.
 ##### usage: 
   <code> python ASE.py -dir count_dir -v vcf -t coding_table -gtf gtf -bam bam -O ASE_result </code>
-
-## Cis-/Trans- control underlying gene expression variation 
-#### We used the ASE data to estimate the relative contribution of cis and trans regulatory effects in variation of gene expression. <br>
-#### The methodology is adapted from [here](https://github.com/Wendellab/CisTransRegulation#analysis-of-cis-trans-regulation-underlying-cotton-fiber-domestication). Briefly, (1) the combination of cis and trans effects was measured by taking the log2 ratios of expression difference between parental lines (**A**=log2(P2/P1)), (2) cis effects were measured by log2 ratios of the corresponding allelic expression in F1 hybrids (**B**=log2(F1P2/F1P1)), and (3) trans effects were derived by subtracting the F1 allelic log2 ratios from the parental log2 ratios (**A**-**B**). The log2 ratios for comparison were calculated in DESeq2.
-#### For the cis/trans classification detail:
-
-#### Inputs: 
-- DESeq2 output for differential expression of parental lines (allelic data utilized);
-- DESeq2 output for allelic differential expression within F1 
-#### Script [cistrans.R](https://github.com/richardmichaelclark/Maize_cistrans/blob/main/cistrans.R) usage: 
-<code> Rscript cistrans.R -par par_DESeq.txt -F1 F1_DESeq.txt -O gene_classification </code>
-
-## Classification of inheritance mode in gene expression 
-#### The categories for gene expression inheritance were adapted from previous studies (e.g., in [Saccharomyces](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5604594/), [cotton](https://www.nature.com/articles/s41467-019-13386-w)). Our methodology was based on [here](https://github.com/Wendellab/CisTransRegulation#analysis-of-cis-trans-regulation-underlying-cotton-fiber-domestication). [publication](https://github.com/Wendellab/CisTransRegulation#analysis-of-cis-trans-regulation-underlying-cotton-fiber-domestication). On its basis, we further explored inheritance mode into partial dominance. So the final classification includes two files: one with partial dominance; one without partial dominance.
-#### Inputs prepared for this analysis:
-- read counts include parents and its F1 offspring
-- sample table matched to the read count data
-#### A universal script was developed in the present study, people who are not good at coding can easily perform their analysis by taking our [code](https://github.com/richardmichaelclark/Maize_cistrans/blob/main/inheritance_mode.R). Usage:
-<code> Rscript inheritance_mode.R -count cnt_table.txt -sample sample_table.txt -par Parent1 Parent2 -F1 F1_label -O inheritance </code>
-    
-## Scripts for results vasulisation:
-#### We generated all heatmap figure using [ComplexHeatmap](https://jokergoo.github.io/ComplexHeatmap-reference/book/) in R. Other types of plots were generated using [ggplot2](http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html) in R. 
-* [lfc_heatmap.R](https://github.com/richardmichaelclark/Maize_cistrans/blob/main/lfc_heatmap.R): generate heatmap with log2foldchange values labeled based on its p-value.
-* [venn.R](https://github.com/richardmichaelclark/Maize_cistrans/blob/main/venn.R): generate Venn Diagram for different gene set
-* [regprop_lfc.R](https://github.com/richardmichaelclark/Maize_cistrans/blob/main/regprop_lfc.R): generate bar plot for the composition of each genetic control along with log2 foldchange between parental lines
-* [GO_bar.R](https://github.com/richardmichaelclark/Maize_cistrans/blob/main/GO_bar.R): bar plot for top enriched GO terms with its description
-* [mode_correlation.Rmd](https://github.com/richardmichaelclark/Maize_cistrans/blob/main/mode_correlation.Rmd): the association between genetic control and gene expression inheritance mode (Chi-squared test of independence)
-* [sankey.Rmd](https://github.com/richardmichaelclark/Maize_cistrans/blob/main/sankey.Rmd): generate sankey plot for tracking the gene regulatory mode under control and treatment conditions
-* [TPM_gene_horizontal.R](https://github.com/richardmichaelclark/Maize_cistrans/blob/main/TPM_gene_horizontal.R): generate bar plot with TPM value for individual genes in each genotype and condition
-
-## Other scripts:
-* [GO_enrich.R](https://github.com/richardmichaelclark/Maize_cistrans/blob/main/GO_enrich.R): perform Gene Ontology (GO) enrichment analysis by employing [clusterProfiler](https://guangchuangyu.github.io/software/clusterProfiler/)
