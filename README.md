@@ -67,21 +67,9 @@ Output table includes information of allelic read count at SNP sites based on RN
 NOTE: Given DIR should include allelic read count on SNP-basis of RNA-seq alignment from single genotype. If the count for the genotype is reference, indicate "-is_ref" in the command line, otherwise don't use that label. 
 From this step, we can sort out SNPs for which RNA-seq inconsistent with DNA-seq. And we will drop these SNPs from further ASE analysis. 
 4. ASE on gene-basis for given BAM file. <br>
-<code> python </code>
+<code> python ASE.py -v VCF -gtf GTF -bam BAM -O output </code>
+NOTE: VCF file should only include SNPs pass filtering of DNA and RNA-based seq alignment. 
 
-
-
-
-#### 1. we used RNA-seq data of parental lines to validate the SNPs identified in DNA-seq alignment (inputs: VCF with SNPs, BAM of RNA-seq alignment, GTF of reference genome). Use 
+## ASE for cis and trans classification <br>
+The methodology of cis and trans classification was adapted from previous [publications](https://www.nature.com/articles/s41467-019-13386-w). <br>
     
-#### By taking SNP variants after DNA-based filtering, we performed gene level ASE analyses. 
-#### Inputs for ASE analysis:
-  - allele-specific read count at allele site (for RNA-based SNP filtering)
-  - RNA-mapping file for parental lines and its F1 hybrid (B96 x B73, B75 x B73);
-  - Filtered VCF file with SNP variant on gene coding region;
-  - Genes with its variants on coding region;
-  - referene genome GTF file;
-  - RNA-seq mapped BAM file;
-#### Please refer to the script [ASE.py](https://github.com/richardmichaelclark/Maize_cistrans/blob/main/ASE.py) for measurement of gene-level allelic expression.
-##### usage: 
-  <code> python ASE.py -dir count_dir -v vcf -t coding_table -gtf gtf -bam bam -O ASE_result </code>
