@@ -51,8 +51,7 @@ The B96 and B75 maize inbred lines are highly resistant to multiple herbivores, 
     - calculate gene and isoform level expression <br>
     <code> rsem-calculate-expression --paired-end --star-gzipped-read-file --star --strandedness reverse -p 45 read_1.fastq.gz read_2.fastq.gz reference_name output </code>
 
-## Developed pipeline for allele-specific expression (ASE) analyses
-#### The following is a step-by-step tutorial for ASE analysis
+## Developed pipeline for allele-specific expression (ASE) analyses (step by step)
 Preparing files:
 - GTF annotation of reference genome (sorted and indexed);
 - VCF of SNPs from DNA-seq alignment (after hard-filtering, sorted and indexed);
