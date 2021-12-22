@@ -53,9 +53,9 @@ The B96 and B75 maize inbred lines are highly resistant to multiple herbivores, 
     - calculate gene and isoform level expression <br>
     <code> rsem-calculate-expression --paired-end --star-gzipped-read-file --star --strandedness reverse -p 45 read_1.fastq.gz read_2.fastq.gz reference_name output </code>
 
-## Developed pipeline for allele-specific expression (ASE) analyses (step by step).
-    - Since the VCF from DNA-seq alignment included SNPs not on gene coding region, which is not informative for ASE analysis, we rewrite a new VCF file and only include SNPs on gene coding region based on genome annotation file (inputs: GTF of reference genome; VCF from DNA-seq alignment call). Run: <br>
-    <code>  python vcf_coding.py -vcf VCF -gtf GTF -O output </code> <br>
+## Developed pipeline for allele-specific expression (ASE) analyses (step by step)
+#### Since the VCF from DNA-seq alignment included SNPs not on gene coding region, which is not informative for ASE analysis, we rewrite a new VCF file and only include SNPs on gene coding region based on genome annotation file (inputs: GTF of reference genome; VCF from DNA-seq alignment call). Run: <br>
+    <code> python vcf_coding.py -vcf VCF -gtf GTF -O output </code> <br>
     Note: To sort and index VCF file, you need install [bcftools](https://samtools.github.io/bcftools/) <br>
     
     - For those SNPs on gene coding region as supported from DNA-seq alignment, we further validated using RNA-seq of parental lines (inputs: GTF of reference genome; BAM of RNA-seq alignment; VCF from last step output). Run: 
