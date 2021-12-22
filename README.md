@@ -30,7 +30,7 @@ The B96 and B75 maize inbred lines are highly resistant to multiple herbivores, 
   <code> gatk SelectVariants -R reference.fasta -V all.vcf.gz -select-type-to-include SNP -O all.SNP.vcf.gz </code>
   <code> gatk SelectVariants -R reference.fasta -V all.vcf.gz -select-type-to-include INDEL -O all.INDEL.vcf.gz </code>
 9. We performed hard-filtering to ratain high-confident SNPs. <br> 
-  Custom python script [vcf_pass.py](https://github.com/richardmichaelclark/Maize_cistrans/blob/main/vcf_pass.py)
+  Custom python script vcf_pass.py
  for this purposes (criteria: MQ > 40 and homozygous genotype): <br>
   <code> python vcf_pass.py -vcf all.SNP.vcf.gz -R reference.fasta -O SNP_fitered </code>
 
@@ -42,7 +42,7 @@ The B96 and B75 maize inbred lines are highly resistant to multiple herbivores, 
   <code> STAR --genomeDir STAR_index --runThreadN 20 --readFilesIn read_1.fastq.gz read_2.fastq.gz --twopassMode Basic --sjdbOverhang 149 --outFileNamePrefix STAR_map --readFilesCommand zcat --alignIntronMax 60000 --outSAMtype SortedByCoordinate && samtools index STAR_map.bam -@ 40 </code>
 3. htseq-count was used to count the reads on gene basis <br>
   <code> htseq-count -f bam -r pos -s reverse -t exon --nonunique none STAR_map.bam reference.gtf > sample_count.txt </code>
-4. Scripts developed for the reconstruction of SNP-corrected genomes see [restore_genome.py](https://github.com/richardmichaelclark/Maize_cistrans/blob/main/restore_genome.py). <br>
+4. Scripts developed for the reconstruction of SNP-corrected genomes see restore_genome.py. <br>
   usage: <br>
   <code> python restore_genome.py -R reference.fasta -vcf_snp <snp.vcf> -O ref_SNP_corrected.fa </code>
 5. Transcript per million (TPM) was calculated using [RSEM](https://deweylab.github.io/RSEM/README.html) <br>
