@@ -2,7 +2,6 @@
 
 ## Experimental Design
 
-#### 
 The B96 and B75 maize inbred lines are highly resistant to multiple herbivores, including the devastating European corn borer (<i> Ostrinia nubilalis </i>) and the generalist two-spotted spider mites (<i> Tetranychus urticae </i>) [ref]("https://www.frontiersin.org/articles/10.3389/fpls.2021.693088/full"). To further understand the genetic basis underlying their resistant phenotype, leaf tissue from maize plants under uninfested (control) or infested (24 h, <i> T. urticae </i> treatment) conditions was collected from B73, B96, and B75, and the respective F1 plants from crosses of B96 and B75 to B73, where RNA-seq was extracted from.
 - 2 independent experiement for B96 vs. B73 and B75 vs. B73 (B73 is relative susceptible line)
 - 2 conditions: the steady (control, **C**) and infested (treatment, **T**) conditions
@@ -54,7 +53,7 @@ The B96 and B75 maize inbred lines are highly resistant to multiple herbivores, 
     <code> rsem-calculate-expression --paired-end --star-gzipped-read-file --star --strandedness reverse -p 45 read_1.fastq.gz read_2.fastq.gz reference_name output </code>
 
 ## Developed pipeline for allele-specific expression (ASE) analyses
-#### The following is a step-by-step tutorial for ASE analysis.
+#### The following is a step-by-step tutorial for ASE analysis
     Preparing files:
     - GTF annotation of reference genome;
     - VCF of SNPs from DNA-seq alignment (after hard-filtering);
