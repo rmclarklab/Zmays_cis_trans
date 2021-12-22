@@ -1,7 +1,6 @@
 # Quantificaiton of allele-specific expression in maize (Zea mays)
 
 ## Experimental Design
-
 The B96 and B75 maize inbred lines are highly resistant to multiple herbivores, including the devastating European corn borer (<i> Ostrinia nubilalis </i>) and the generalist two-spotted spider mites (<i> Tetranychus urticae </i>) [ref]("https://www.frontiersin.org/articles/10.3389/fpls.2021.693088/full"). To further understand the genetic basis underlying their resistant phenotype, leaf tissue from maize plants under uninfested (control) or infested (24 h, <i> T. urticae </i> treatment) conditions was collected from B73, B96, and B75, and the respective F1 plants from crosses of B96 and B75 to B73, where RNA-seq was extracted from.
 - 2 independent experiement for B96 vs. B73 and B75 vs. B73 (B73 is relative susceptible line)
 - 2 conditions: the steady (control, **C**) and infested (treatment, **T**) conditions
@@ -54,10 +53,10 @@ The B96 and B75 maize inbred lines are highly resistant to multiple herbivores, 
 
 ## Developed pipeline for allele-specific expression (ASE) analyses
 #### The following is a step-by-step tutorial for ASE analysis
-    Preparing files:
-    - GTF annotation of reference genome;
-    - VCF of SNPs from DNA-seq alignment (after hard-filtering);
-    - BAM of RNA-seq alignment for parental lines and F1 hybrid (sorted and indexed);
+Preparing files:
+- GTF annotation of reference genome;
+- VCF of SNPs from DNA-seq alignment (after hard-filtering);
+- BAM of RNA-seq alignment for parental lines and F1 hybrid (sorted and indexed);
 1. Since the VCF from DNA-seq alignment includes SNPs not on gene coding region, which is not informative for ASE analysis, we rewrite a new VCF file and only include SNPs on gene coding region based on genome annotation file. <br>
     <code> python vcf_coding.py -vcf VCF -gtf GTF -O output </code>
     Note: To sort and index VCF file, you need install [bcftools](https://samtools.github.io/bcftools/) <br>
