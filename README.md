@@ -54,19 +54,19 @@ The B96 and B75 maize inbred lines are highly resistant to multiple herbivores, 
 ## Developed pipeline for allele-specific expression (ASE) analyses
 #### The following is a step-by-step tutorial for ASE analysis
 Preparing files:
-- GTF annotation of reference genome;
-- VCF of SNPs from DNA-seq alignment (after hard-filtering);
+- GTF annotation of reference genome (sorted and indexed);
+- VCF of SNPs from DNA-seq alignment (after hard-filtering, sorted and indexed);
 - BAM of RNA-seq alignment for parental lines and F1 hybrid (sorted and indexed);
 1. Since the VCF from DNA-seq alignment includes SNPs not on gene coding region, which is not informative for ASE analysis, we rewrite a new VCF file and only include SNPs on gene coding region based on genome annotation file. <br>
-    <code> python vcf_coding.py -vcf VCF -gtf GTF -O output </code>
-    Note: To sort and index VCF file, you need install [bcftools](https://samtools.github.io/bcftools/) <br>
-    
-    - For those SNPs on gene coding region as supported from DNA-seq alignment, we further validated using RNA-seq of parental lines (inputs: GTF of reference genome; BAM of RNA-seq alignment; VCF from last step output). Run: 
-    
-    
-    
-    
-    
+<code> python vcf_coding.py -vcf VCF -gtf GTF -O output </code>
+Note: To sort and index VCF file, you need install [bcftools](https://samtools.github.io/bcftools/) <br>
+2. Before ASE, we further validated SNPs from RNA-seq alignment of parental lines. <br>
+<code> python SNP_allele_count.py -vcf VCF -bam parental_BAM -gtf GTF -O parental_count </code>
+Output table includes information of allelic read count at SNP sites based on RNA BAM file. 
+3. Two parental lines provided RNA-seq for SNP validation, replicates from single genotype can be combined (no matter what condition) for given genotype SNP validation. <br> 
+<code> python SNP_filter.py </code>
+
+
 #### 1. we used RNA-seq data of parental lines to validate the SNPs identified in DNA-seq alignment (inputs: VCF with SNPs, BAM of RNA-seq alignment, GTF of reference genome). Use 
     
 #### By taking SNP variants after DNA-based filtering, we performed gene level ASE analyses. 
