@@ -63,7 +63,13 @@ Note: To sort and index VCF file, you need install [bcftools](https://samtools.g
 <code> python SNP_allele_count.py -vcf VCF -bam parental_BAM -gtf GTF -O parental_count </code>
 Output table includes information of allelic read count at SNP sites based on RNA BAM file. 
 3. Two parental lines provided RNA-seq for SNP validation, replicates from single genotype can be combined (no matter what condition) for given genotype SNP validation. <br> 
-<code> python SNP_filter.py </code>
+<code> python SNP_filter.py -dir DIR -O output </code>
+NOTE: Given DIR should include allelic read count on SNP-basis of RNA-seq alignment from single genotype. If the count for the genotype is reference, indicate "-is_ref" in the command line, otherwise don't use that label. 
+From this step, we can sort out SNPs for which RNA-seq inconsistent with DNA-seq. And we will drop these SNPs from further ASE analysis. 
+4. ASE on gene-basis for given BAM file. <br>
+<code> python </code>
+
+
 
 
 #### 1. we used RNA-seq data of parental lines to validate the SNPs identified in DNA-seq alignment (inputs: VCF with SNPs, BAM of RNA-seq alignment, GTF of reference genome). Use 
