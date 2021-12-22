@@ -60,7 +60,7 @@ Preparing files:
 <code> python vcf_coding.py -vcf VCF -gtf GTF -O output </code>
 Note: To sort and index VCF file, you need install [bcftools](https://samtools.github.io/bcftools/) <br>
 2. Before ASE, we further validated SNPs from RNA-seq alignment of parental lines. <br>
-<code> python SNP_allele_count.py -vcf VCF -bam parental_BAM -gtf GTF -O parental_count </code>
+<code> python snp_allele_count.py -vcf VCF -bam parental_BAM -gtf GTF -O parental_count </code>
 Output table includes information of allelic read count at SNP sites based on RNA BAM file. 
 3. Two parental lines provided RNA-seq for SNP validation, replicates from single genotype can be combined (no matter what condition) for given genotype SNP validation. <br> 
 <code> python SNP_filter.py -dir DIR -O output </code>
