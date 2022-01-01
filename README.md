@@ -25,7 +25,7 @@ The B96 and B75 maize inbred lines are highly resistant to multiple herbivores, 
 6. Combine all separate g.vcf.gz for individual chromosome (/scaffold) into one g.vcf.gz <br>
   <code> gatk combineGVCFs -R reference.fasta --variant chromosome_1.g.vcf.gz --variant chromosome_2.g.vcf.gz ...... -O all.g.vcf.gz </code>
 7. Call genotype file in vcf format <br>
-  <code> gatk GenotypeGVCFs -R reference.fasta -V all.g.vcf.gz -O all.vcf.gz </code>
+  <code> gatk GenotypeGVCFs -R reference.fasta -V all.g.vcf.gz -O all.vcf.gz </code> 
 8. To split SNPs and INDELs in the vcf file <br>
   <code> gatk SelectVariants -R reference.fasta -V all.vcf.gz -select-type-to-include SNP -O all.SNP.vcf.gz </code>
   <code> gatk SelectVariants -R reference.fasta -V all.vcf.gz -select-type-to-include INDEL -O all.INDEL.vcf.gz </code>
@@ -67,7 +67,7 @@ Output table includes information of allelic read count at SNP sites based on RN
 NOTE: Given DIR should include allelic read count on SNP-basis of RNA-seq alignment from single genotype. If the count for the genotype is reference, indicate "-is_ref" in the command line, otherwise don't use that label. 
 From this step, we can sort out SNPs for which RNA-seq inconsistent with DNA-seq. And we will drop these SNPs from further ASE analysis. 
 4. ASE on gene-basis for given BAM file. <br>
-<code> python ASE.py -v VCF -gtf GTF -bam BAM -O output </code>
+<code> python ASE.py -v VCF -gtf GTF -bam BAM -O output </code> <br>
 NOTE: VCF file should only include SNPs pass filtering of DNA and RNA-based seq alignment. 
 
 ## ASE for cis and trans classification <br>
