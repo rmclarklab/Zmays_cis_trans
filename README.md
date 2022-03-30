@@ -8,7 +8,7 @@ The B96 and B75 maize inbred lines are highly resistant to multiple herbivores, 
 
 ## Programs version used in this study
 [bwa](https://github.com/lh3/bwa) Version: 0.7.17-r1188 <br>
-**GATK** Version: 4.1.4.1 <br>
+[GATK](https://gatk.broadinstitute.org/hc/en-us/sections/360007226651-Best-Practices-Workflows) Version: 4.1.4.1 <br>
 **samtools** Version: 1.9 (using htslib 1.9) <br>
 **picard** Version: 2.25.2 <br>
 **star** Version: 2.7.1a <br>
@@ -16,7 +16,7 @@ The B96 and B75 maize inbred lines are highly resistant to multiple herbivores, 
 NOTE: Strongly recommend to read the manual of those programs before you use them for your purposes.
 
 ## SNPs calling to enable allele-specific expression analysis
-#### We followed best practice recommendations for the [GATK](https://gatk.broadinstitute.org/hc/en-us/articles/360035535932-Germline-short-variant-discovery-SNPs-Indels-) pipeline for variants calling purposes. <br>
+#### We followed best practice recommendations for the [GATK](https://gatk.broadinstitute.org/hc/en-us/sections/360007226651-Best-Practices-Workflows) pipeline for variants calling purposes. <br>
 1. Generate index for reference genome <br>
 - create reference index for bwa mapping <br>
   <code> bwa index -p <prefix> reference.fasta </code>
