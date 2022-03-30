@@ -29,9 +29,9 @@ NOTE: Strongly recommend to read the manual of those programs before you use the
 4. align indels on the left side (optional, see [here](https://gatk.broadinstitute.org/hc/en-us/articles/360037067752-LeftAlignIndels)) <br>
   <code> gatk LeftAlignIndels -R reference.fasta -I output_mark.bam -O output_mark_leftalign.bam --create-output-bam-index true </code>
 5. call SNPs and indels via local de-novo assembly of haplotypes <br>
-  <code> gatk HaplotypeCaller -R reference.fasta -I output_mark_leftalign.bam -ERC GVCF -L chromosome_1 -O chromosome_1.g.vcf.gz --sequence-dictionary reference.dict </code>
+  <code> gatk HaplotypeCaller -R reference.fasta -I output_mark_leftalign.bam -ERC GVCF -L chromosome_1 -O chromosome_1.g.vcf.gz --sequence-dictionary reference.dict </code> <br>
 ** Note: haplotypecaller needs to be called for each individual chromosome. <br>
-6. Combine all separate g.vcf.gz for individual chromosome (/scaffold) into one g.vcf.gz <br>
+6. Combine all separate g.vcf.gz for individual chromosome (/scaffold) into one g.vcf.gz (out-dated, see also [GenomicsDBImport](https://gatk.broadinstitute.org/hc/en-us/articles/360036883491-GenomicsDBImport)) <br>
   <code> gatk combineGVCFs -R reference.fasta --variant chromosome_1.g.vcf.gz --variant chromosome_2.g.vcf.gz ...... -O all.g.vcf.gz </code>
 7. Call genotype file in vcf format <br>
   <code> gatk GenotypeGVCFs -R reference.fasta -V all.g.vcf.gz -O all.vcf.gz </code> 
