@@ -25,7 +25,8 @@ NOTE: Strongly recommend to read the manual of those programs before you use the
 - build reference directionry using picard <br>
   <code> picard CreateSequenceDictionary --REFERENCE reference.fasta </code>
 2. DNA-seq mapping using bwa <br>
-  <code> bwa mem -t 20 reference.fasta read_1.fq read_2.fq | samtools view -Su - | samtools sort -@ 20 - -o output.bam </code>
+  <code> bwa mem -t 20 reference.fasta read_1.fq read_2.fq -R "@RG\tID:your_library_id\tSM:sample_name\tPL:Platform\tLB:library_label" | samtools view -Su - | samtools sort -@ 20 - -o output.bam </code>
+  NOTE: add read-group (RG) is required for GATK to process BAM file. 
 3. mark duplicates for bam file using picard <br>
   <code> picard MarkDuplicates -I input.bam -O output_mark.bam -M output.metrics -ASO coordinate --CREATE_INDEX true </code>
 4. align indels on the left side (optional, see [here](https://gatk.broadinstitute.org/hc/en-us/articles/360037067752-LeftAlignIndels)) <br>
