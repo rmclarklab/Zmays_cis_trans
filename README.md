@@ -1,10 +1,16 @@
 # Quantificaiton of allele-specific expression in maize (Zea mays)
 
 ## Experimental Design
-The B96 and B75 maize inbred lines are highly resistant to multiple herbivores, including the devastating European corn borer (<i> Ostrinia nubilalis </i>) and the generalist two-spotted spider mites (<i> Tetranychus urticae </i>) [ref](https://doi.org/10.3389/fpls.2021.693088). To further understand the genetic basis underlying their resistant phenotype, leaf tissue from maize plants under uninfested (control) or infested (24 h, <i> T. urticae </i> treatment) conditions was collected from B73, B96, and B75, and the respective F1 plants from crosses of B96 and B75 to B73, where RNA-seq was extracted from.
+The B96 and B75 maize inbred lines are highly resistant to multiple herbivores, including the devastating European corn borer (<i> Ostrinia nubilalis </i>) and the generalist two-spotted spider mites (<i> Tetranychus urticae </i>) [Bui, et al., 2021](https://doi.org/10.3389/fpls.2021.693088). To further understand the genetic basis underlying their resistant phenotype, leaf tissue from maize plants under uninfested (control) or infested (24 h, <i> T. urticae </i> treatment) conditions was collected from B73, B96, and B75, and the respective F1 plants from crosses of B96 and B75 to B73, where RNA-seq was extracted from.
 - 2 independent experiement for B96 vs. B73 and B75 vs. B73 (B73 is relative susceptible line)
-- 2 conditions: the steady (control, **C**) and infested (treatment, **T**) conditions
+- 2 conditions: the steady (control, **C**) and infested (mite herbivory treatmetn, **T**) conditions
 - 4 biological replicates 
+
+## Programs version used in this study
+**bwa** Version: 0.7.17-r1188
+**GATK** Version: 4.1.4.1
+**samtools** Version: 1.9 (using htslib 1.9)
+**python** Version: 3.7.3 (including python pacakages: pysam, pandas, etc. compatible with the python version)
 
 ## SNPs calling to enable allele-specific expression analysis
 #### We followed best practice recommendations for the [GATK](https://gatk.broadinstitute.org/hc/en-us/articles/360035535932-Germline-short-variant-discovery-SNPs-Indels-) pipeline for variants calling purposes. <br>
