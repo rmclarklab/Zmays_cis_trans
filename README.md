@@ -27,10 +27,7 @@ NOTE: Strongly recommend to read the manual of those programs before you use the
 2. DNA-seq mapping using bwa <br>
   <code> bwa mem -t 20 reference.fasta read_1.fq read_2.fq -R "@RG\tID:your_library_id\tSM:sample_name\tPL:Platform\tLB:library_label" | samtools view -Su - | samtools sort -@ 20 - -o output.bam </code>
   NOTE: add read-group (RG) is required for GATK to process BAM file. <br>
-  If you didn't include RG in your first mapping, you can rewrite header for BAM by adding @RG line. <br>
-  samtools view -H in.bam > header.sam
-  sed -i '$a @RG\tID:yourID\tSM:yourSAMPLE\tPL:Illumina\tLB:yourLIB' header.sam
-  samtools reheader header.sam in.bam > reheadered.bam
+  If you didn't include RG in your first mapping, see [here](https://gatk.broadinstitute.org/hc/en-us/articles/360037872491)
   
 3. mark duplicates for bam file using picard <br>
   <code> picard MarkDuplicates -I input.bam -O output_mark.bam -M output.metrics -ASO coordinate --CREATE_INDEX true </code>
