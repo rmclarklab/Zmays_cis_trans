@@ -20,7 +20,7 @@ NOTE: Strongly recommend to read the manual of those programs before you use the
 * Generate index for reference genome <br>
   * create reference index for bwa mapping <br>
 
-  bwa index -p <prefix> reference.fasta
+    bwa index -p <prefix> reference.fasta
   
 - build reference directionry using picard <br>
   <code> picard CreateSequenceDictionary --REFERENCE reference.fasta </code>
