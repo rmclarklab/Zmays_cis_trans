@@ -7,7 +7,7 @@ The B96 and B75 maize inbred lines are highly resistant to multiple herbivores, 
 - 4 biological replicates 
 
 ## Programs version used in this study
-[bwa](https://github.com/lh3/bwa) Version: 0.7.17-r1188 <br>
+[BWA](https://github.com/lh3/bwa) Version: 0.7.17-r1188 <br>
 [GATK](https://gatk.broadinstitute.org/hc/en-us/sections/360007226651-Best-Practices-Workflows) Version: 4.1.4.1 <br>
 **samtools** Version: 1.9 (using htslib 1.9) <br>
 **picard** Version: 2.25.2 <br>
@@ -26,7 +26,7 @@ NOTE: Strongly recommend to read the manual of those programs before you use the
   <code> bwa mem -t 20 reference.fasta read_1.fq read_2.fq | samtools view -Su - | samtools sort -@ 20 - -o output.bam </code>
 3. mark duplicates for bam file using picard <br>
   <code> picard MarkDuplicates -I input.bam -O output_mark.bam -M output.metrics -ASO coordinate --CREATE_INDEX true </code>
-4. align indexs on the left side (optional, see [here](https://gatk.broadinstitute.org/hc/en-us/articles/360037067752-LeftAlignIndels)) <br>
+4. align indels on the left side (optional, see [here](https://gatk.broadinstitute.org/hc/en-us/articles/360037067752-LeftAlignIndels)) <br>
   <code> gatk LeftAlignIndels -R reference.fasta -I output_mark.bam -O output_mark_leftalign.bam --create-output-bam-index true </code>
 5. call SNPs and indels via local de-novo assembly of haplotypes <br>
   <code> gatk HaplotypeCaller -R reference.fasta -I output_mark_leftalign.bam -ERC GVCF -L chromosome_1 -O chromosome_1.g.vcf.gz --sequence-dictionary reference.dict </code>
