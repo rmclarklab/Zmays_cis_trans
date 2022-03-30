@@ -25,7 +25,7 @@ NOTE: Strongly recommend to read the manual of those programs before you use the
 2. DNA-seq mapping using bwa <br>
   <code> bwa mem -t 20 reference.fasta read_1.fq read_2.fq | samtools view -Su - | samtools sort -@ 20 - -o output.bam </code>
 3. mark duplicates for bam file using picard <br>
-  <code> picard MarkDuplicates -I input.bam -O output_mark.bam -M output.metrics -ASO coordinate --CREATE_INDEX true --REMOVE_DUPLICATES && samtools index -@ 20 output_mark.bam </code>
+  <code> picard MarkDuplicates -I input.bam -O output_mark.bam -M output.metrics -ASO coordinate --CREATE_INDEX true --REMOVE_DUPLICATES </code>
 4. align indexs on the left side <br>
   <code> gatk LeftAlignIndels -R reference.fasta -I output_mark.bam -O output_mark_leftalign.bam --create-output-bam-index true </code>
 5. call SNPs and indels via local de-novo assembly of haplotypes <br>
