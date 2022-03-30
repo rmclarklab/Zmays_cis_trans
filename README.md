@@ -28,7 +28,7 @@ NOTE: Strongly recommend to read the manual of those programs before you use the
   <code> picard MarkDuplicates -I input.bam -O output_mark.bam -M output.metrics -ASO coordinate --CREATE_INDEX true </code>
 4. align indels on the left side (optional, see [here](https://gatk.broadinstitute.org/hc/en-us/articles/360037067752-LeftAlignIndels)) <br>
   <code> gatk LeftAlignIndels -R reference.fasta -I output_mark.bam -O output_mark_leftalign.bam --create-output-bam-index true </code>
-5. call SNPs and indels via local de-novo assembly of haplotypes <br>
+5. call SNPs and indels per sample via local de-novo assembly of haplotypes <br>
   <code> gatk HaplotypeCaller -R reference.fasta -I output_mark_leftalign.bam -ERC GVCF -L chromosome_1 -O chromosome_1.g.vcf.gz --sequence-dictionary reference.dict </code> <br>
 ** Note: haplotypecaller needs to be called for each individual chromosome. <br>
 6. Combine all separate g.vcf.gz for individual chromosome (/scaffold) into one g.vcf.gz (out-dated, see also [GenomicsDBImport](https://gatk.broadinstitute.org/hc/en-us/articles/360036883491-GenomicsDBImport)) <br>
