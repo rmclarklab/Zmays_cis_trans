@@ -18,7 +18,7 @@ NOTE: Strongly recommend to read the manual of those programs before you use the
 ## SNPs calling to enable allele-specific expression analysis
 #### We followed best practice recommendations for the [GATK](https://gatk.broadinstitute.org/hc/en-us/sections/360007226651-Best-Practices-Workflows) pipeline for variants calling purposes. <br>
 * Generate index for reference genome <br>
-  * create reference index for bwa mapping <br>
+  * create reference index for bwa mapping:
 
     bwa index -p <prefix> reference.fasta
   
