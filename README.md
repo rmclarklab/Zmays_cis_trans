@@ -13,6 +13,7 @@ The B96 and B75 maize inbred lines are highly resistant to multiple herbivores, 
 **picard** Version: 2.25.2 <br>
 **star** Version: 2.7.1a <br>
 **python** Version: 3.7.3 (including python pacakages: pysam, pandas, etc. compatible with the python version) <br>
+NOTE: Strongly recommend to read the manual of those programs before you use them for your purposes.
 
 ## SNPs calling to enable allele-specific expression analysis
 #### We followed best practice recommendations for the [GATK](https://gatk.broadinstitute.org/hc/en-us/articles/360035535932-Germline-short-variant-discovery-SNPs-Indels-) pipeline for variants calling purposes. <br>
