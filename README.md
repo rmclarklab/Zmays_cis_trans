@@ -26,7 +26,7 @@ NOTE: Strongly recommend to read the manual of those programs before you use the
   <code> bwa mem -t 20 reference.fasta read_1.fq read_2.fq | samtools view -Su - | samtools sort -@ 20 - -o output.bam </code>
 3. mark duplicates for bam file using picard <br>
   <code> picard MarkDuplicates -I input.bam -O output_mark.bam -M output.metrics -ASO coordinate --CREATE_INDEX true </code>
-4. align indexs on the left side <br>
+4. align indexs on the left side (optional, see [here](https://gatk.broadinstitute.org/hc/en-us/articles/360037067752-LeftAlignIndels)) <br>
   <code> gatk LeftAlignIndels -R reference.fasta -I output_mark.bam -O output_mark_leftalign.bam --create-output-bam-index true </code>
 5. call SNPs and indels via local de-novo assembly of haplotypes <br>
   <code> gatk HaplotypeCaller -R reference.fasta -I output_mark_leftalign.bam -ERC GVCF -L chromosome_1 -O chromosome_1.g.vcf.gz --sequence-dictionary reference.dict </code>
