@@ -83,6 +83,8 @@ From this step, we can sort out SNPs for which RNA-seq inconsistent with DNA-seq
 <code> python ASE.py -v VCF -gtf GTF -bam BAM -O output </code> <br>
 NOTE: VCF file should only include SNPs pass filtering of DNA and RNA-based seq alignment. 
 
+ADDITIONAL NOTE: For the ASE analyses, see next section, for parental samples we down sampled (by random read count selection) the read data for the parents by one-half to better match that of ASE reads in F1s (this resulted in more analogous estimates of gene fold changes in comparison of F1 fold changes to that or the parents as calculated by DESeq2). The script used for the down sampling can be found here.
+
 ## ASE for cis and trans classification <br>
 The methodology of cis and trans classification was adapted from previous [publications](https://www.nature.com/articles/s41467-019-13386-w). <br>
     
