@@ -80,7 +80,7 @@ From this step, we can sort out SNPs for which RNA-seq inconsistent with DNA-seq
 4. ASE on gene-basis for given BAM file. <br>
 <code> python ASE.py -v VCF -gtf GTF -bam BAM -O output </code> <br>
 NOTE: VCF file should only include SNPs pass filtering of DNA and RNA-based seq alignment. 
-ADDITIONAL NOTE: For the ASE analyses, see next section, after obtaining count data for the parental samples, we down sampled counts per gene by one half so that the read count depth would be approximately comparable to those obtained for parent-of-origin reads within the F1s (this step makes count data depth approximately the same for comparisons within F1s and for comparisons between pairs of parents as needed to assess genetic modes of control). Code for this step can be found here().
+ADDITIONAL NOTE: For the ASE analyses (see next section), after obtaining count data for the parental samples, we down sampled counts per gene by one half so that the read count depth would be approximately comparable to those obtained for parent-of-origin reads within the F1s (this step makes count data depth approximately the same for comparisons within F1s and for comparisons between pairs of parents as needed to assess genetic modes of control). For this step see code random_count.py.
 
 ## ASE for cis and trans classification <br>
 The methodology of cis and trans classification was adapted from previous [publications](https://www.nature.com/articles/s41467-019-13386-w). <br>
